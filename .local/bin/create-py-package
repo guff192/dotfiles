@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# print help function
+function print_help {
+    echo "Usage: create-py-package <package_name>"
+}
+
+# check if the number of arguments is correct
+if [ $# -ne 1 ]
+then
+    print_help
+    exit 1
+fi
+
+# get the package name
+PACKAGE_NAME=$1
+
+# create the package directory
+mkdir $PACKAGE_NAME
+
+# create the __init__.py file
+touch $PACKAGE_NAME/__init__.py
+
+# success message
+echo "Package $PACKAGE_NAME created successfully!"
+

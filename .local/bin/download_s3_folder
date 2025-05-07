@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+
+import os
+import subprocess
+import sys
+
+
+S3_ENDPOINT = os.getenv('S3_ENDPOINT')
+
+
+def download_s3_folder(bucket_name, s3_folder, local_dir=None):
+    # Set the endpoint URL
+    if not S3_ENDPOINT:
+        print('Please set the S3_ENDPOINT environment variable.')
+        sys.exit(1)
+
+    endpoint_url = S3_ENDPOINT
+
+    # Use the current working directory if no local directory is provided
+    if local_dir is None:
+        local_dir = os.getcwd() + '/' + s3_folder
+
+    try:
+        # Construct the CLI command with the endpoint URL
+        cmd = f'aws s3 sync "s3://{bucket_name}/{s3_folder}" "{local_dir}" --endpoint-url {endpoint_url}'
+
+        # Execute the command
+        subprocess.check_call(cmd, shell=True)
+        print(f'Folder "{s3_folder}"\nfrom bucket "{bucket_name}"\ndownloaded successfully to {local_dir}')
+    except subprocess.CalledProcessError as e:
+        print(f'An error occurred while downloading the folder: {e}')
+        sys.exit(1)
+
+
+if __name__ == '__main__':
+    if len(sys.argv) < 3 or len(sys.argv) > 4:
+        print('Usage: download_s3_folder.py <bucket_name> <s3_folder> [local_dir]')
+        sys.exit(1)
+
+    bucket = sys.argv[1]
+    s3_folder = sys.argv[2]
+    local_dir = sys.argv[3] if len(sys.argv) == 4 else None
+
+    download_s3_folder(bucket, s3_folder, local_dir)
+
