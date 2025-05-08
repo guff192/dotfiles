@@ -8,7 +8,7 @@ blinking = "Off"
 shape = "Block"
 
 [env]
-TERM = "alacritty"
+#TERM = "alacritty"
 
 [font]
 builtin_box_drawing = false
@@ -16,7 +16,7 @@ size = 15.0
 # use_thin_strokes = false
 
 [font.normal]
-family = "JetBrainsMono Nerd Font Mono"
+family = "JetBrains Mono"
 style = "Regular"
 
 [[keyboard.bindings]]
@@ -63,8 +63,8 @@ key = "Minus"
 mods = "Command"
 
 [shell]
+program = "zsh"
 args = ["-l", "-c", "tmux attach -t main || tmux new-session -s main"]
-program = "/bin/zsh"
 
 [window]
 blur = false
