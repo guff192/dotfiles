@@ -1,10 +1,12 @@
+vim.lsp.set_log_level("off")
+
 local lsp_zero = require('lsp-zero')
 
 vim.g.diagnostic_active = true
 function _G.toggle_diagnostic()
   if vim.g.diagnostic_active then
     vim.g.diagnostic_active = false
-    vim.diagnostic.disable()
+    vim.diagnostic.enable(false)
     -- vim.handlers["textDocument/publishDiagnostics"] = function() end
   else
     vim.g.diagnostic_active = true
@@ -38,6 +40,7 @@ require('mason-lspconfig').setup({
     ensure_installed = {
         'eslint',
         'lua_ls',
+        'arduino_language_server',
     },
     handlers = {
         lsp_zero.default_setup,
@@ -46,6 +49,29 @@ require('mason-lspconfig').setup({
             require('lspconfig').lua_ls.setup(lua_opts)
         end,
     },
+
+    -- custom server for arduino_language_server
+    arduino_language_server = function ()
+        require('lspconfig').arduino_language_server.setup({
+            cmd = {
+                "arduino-language-server",
+                "-cli-config",
+                vim.fn.expand("~/.arduino15/arduino-cli.yaml"),
+                "-fqbn",
+                "esp8266:esp8266:nodemcuv2",
+                "-cli",
+                "arduino-cli",
+                "-clangd",
+                "clangd",
+            },
+
+            filetypes = { "arduino" },
+
+            root_dir = function (bufnr, on_dir)
+                on_dir(vim.fn.expand "%:p:h")
+            end,
+        })
+    end
 })
 -- After setting up mason-lspconfig you may set up servers via lspconfig
 -- require("lspconfig").lua_ls.setup {}
@@ -80,6 +106,7 @@ require('mason-lspconfig').setup({
 --         }
 --     }
 -- }
+
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }

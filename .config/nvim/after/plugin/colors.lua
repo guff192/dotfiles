@@ -10,6 +10,7 @@ function _G.ColorMyPencils(color)
     vim.cmd('normal zz')
     vim.cmd('normal _')
 
+    vim.cmd('TSToggle highlight')
     -- Set the colorscheme, default is neogruvbox
     vim.cmd("colorscheme catppuccin-mocha")
 
