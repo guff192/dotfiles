@@ -1,0 +1,43 @@
+// This is a modifed version of Michael Gruhn's 4 Band Joiner
+
+// (C) 2006, Michael Gruhn.
+
+// NO WARRANTY IS GRANTED. THIS PLUG-IN IS PROVIDED ON AN "AS IS" BASIS, WITHOUT
+// WARRANTY OF ANY KIND. NO LIABILITY IS GRANTED, INCLUDING, BUT NOT LIMITED TO,
+// ANY DIRECT OR INDIRECT,  SPECIAL,  INCIDENTAL OR CONSEQUENTIAL DAMAGE ARISING
+// OUT OF  THE  USE  OR INABILITY  TO  USE  THIS PLUG-IN,  COMPUTER FAILTURE  OF
+// MALFUNCTION INCLUDED.  THE USE OF THE SOURCE CODE,  EITHER  PARTIALLY  OR  IN
+// TOTAL, IS ONLY GRANTED,  IF USED IN THE SENSE OF THE AUTHOR'S INTENTION,  AND
+// USED WITH ACKNOWLEDGEMENT OF THE AUTHOR. FURTHERMORE IS THIS PLUG-IN A  THIRD
+// PARTY CONTRIBUTION,  EVEN IF INCLUDED IN REAPER(TM),  COCKOS INCORPORATED  OR
+// ITS AFFILIATES HAVE NOTHING TO DO WITH IT.  LAST BUT NOT LEAST, BY USING THIS
+// PLUG-IN YOU RELINQUISH YOUR CLAIM TO SUE IT'S AUTHOR, AS WELL AS THE CLAIM TO
+// ENTRUST SOMEBODY ELSE WITH DOING SO.
+
+
+desc:4-Band-Joiner 
+slider1:0<-42,12,.1>Ch 1/2 Vol (dB)
+slider2:0<-42,12,.1>Ch 3/4 Vol (dB)
+slider3:0<-42,12,.1>Ch 5/6 Vol (dB)
+slider4:0<-42,12,.1>Ch 7/8 Vol (dB)
+slider5:0<-100,100,1>Ch 1/2 Pan (%)
+slider6:0<-100,100,1>Ch 3/4 Pan (%)
+slider7:0<-100,100,1>Ch 5/6 Pan (%)
+slider8:0<-100,100,1>Ch 7/8 Pan (%)
+
+
+@init
+c_ampdB = 8.65617025;
+b=0;
+
+@slider
+band1 = exp(slider1/c_ampdB);
+band2 = exp(slider2/c_ampdB);
+band3 = exp(slider3/c_ampdB);
+band4 = exp(slider4/c_ampdB);
+band1 = abs(slider5/100);
+
+@sample
+spl0 = spl0 * band1 + spl2 * band2 + spl4 * band3 + spl6 * band4;
+spl1 = spl1 * band1 + spl3 * band2 + spl5 * band3 + spl7 * band4;
+

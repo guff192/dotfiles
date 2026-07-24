@@ -17,8 +17,23 @@ vim.opt.expandtab = true
 
 vim.opt.smartindent = true
 
--- No wrapping
+-- No wrapping by default
 vim.opt.wrap = false
+
+-- Set wrap for some file types
+-- First, we add the file types
+vim.filetype.add({
+    extension = {
+        log = "log",
+    },
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "markdown", "text", "log" },
+    callback = function()
+        vim.opt_local.wrap = true
+    end,
+})
 
 vim.opt.swapfile = false
 vim.opt.backup = false

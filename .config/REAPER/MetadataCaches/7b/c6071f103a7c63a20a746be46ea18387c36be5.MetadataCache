@@ -1,0 +1,11 @@
+C10018 /home/guff192/Music/Projects/PsySomething/Media/samples
+F dopefiend_kick.wav 167218 0 1492860642 0
+D s 44100 n 2 l 0:00.947 i 16
+F down_hat.wav 658258 0 1492861184 0
+D p 128.6652 s 44100 n 2 l 0:01.865
+D i 32
+F ghoul_snare.wav 1302828 0 1492860930 0
+D t "soundboutiq 1 (Snare 3_2)" s 44100 n 2 l 0:07.384
+D i 16
+F shake_cymbal.wav 1142980 0 1492862038 0
+D s 44100 n 2 l 0:04.319 i 24

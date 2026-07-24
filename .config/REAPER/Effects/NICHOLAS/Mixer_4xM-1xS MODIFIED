@@ -1,0 +1,93 @@
+// This is a modified version of a plug-in originally developed by Philip S. Considine
+
+/*
+Copyright 2007, Philip S. Considine
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted 
+provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions 
+and the following disclaimer. 
+
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+and the following disclaimer in the documentation and/or other materials provided with the distribution. 
+
+The name of Philip S. Considine may not be used to endorse or promote products derived from this
+software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR 
+IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND 
+FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS 
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES 
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
+THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+////////////////////////////////////////////////////////////////////////////////
+desc:4 channel mixer -40 to +10dB modifed by NICHOLAS
+
+////////////////////////////////////////////////////////////////////////////////
+slider1:-6<-40,10,0.1>Level 1 (dB)
+slider2:-6<-40,10,0.1>Level 2 (dB)
+slider3:-6<-40,10,0.1>Level 3 (dB)
+slider4:-6<-40,10,0.1>Level 4 (dB)
+slider5:0<0,1,0.01>Pan 1 L<->R
+slider6:1<0,1,0.01>Pan 2 L<->R
+slider7:0<0,1,0.01>Pan 3 L<->R
+slider8:1<0,1,0.01>Pan 4 L<->R
+
+////////////////////////////////////////////////////////////////////////////////
+@init
+//These just save me some typing if I change the slider ranges
+gainMin = -120; gainMax = 30;
+
+////////////////////////////////////////////////////////////////////////////////
+@slider
+//Catch bad values for gain sliders
+slider1 < gainMin ? slider1 = gainMin; slider1 > gainMax ? slider1 = gainMax;
+slider2 < gainMin ? slider2 = gainMin; slider2 > gainMax ? slider2 = gainMax;
+slider3 < gainMin ? slider3 = gainMin; slider3 > gainMax ? slider3 = gainMax;
+slider4 < gainMin ? slider4 = gainMin; slider4 > gainMax ? slider4 = gainMax;
+
+//Catch bad values for pan sliders
+slider5 < 0 ? slider5 = 0; slider5 > 1 ? slider5 = 1;
+slider6 < 0 ? slider6 = 0; slider6 > 1 ? slider6 = 1;
+slider7 < 0 ? slider7 = 0; slider7 > 1 ? slider7 = 1;
+slider8 < 0 ? slider8 = 0; slider8 > 1 ? slider8 = 1;
+
+//Calculate gains and pans
+gain1 = 2 ^ ( slider1 / 6 ); L1 = sqrt(1-slider5); R1 = sqrt(slider5);
+gain2 = 2 ^ ( slider2 / 6 ); L2 = sqrt(1-slider6); R2 = sqrt(slider6);
+gain3 = 2 ^ ( slider3 / 6 ); L3 = sqrt(1-slider7); R3 = sqrt(slider7);
+gain4 = 2 ^ ( slider4 / 6 ); L4 = sqrt(1-slider8); R4 = sqrt(slider8);
+
+modL1 = gain1 * L1;
+modL2 = gain2 * L2;
+modL3 = gain3 * L3;
+modL4 = gain4 * L4;
+
+modR1 = gain1 * R1;
+modR2 = gain2 * R2;
+modR3 = gain3 * R3;
+modR4 = gain4 * R4;
+
+////////////////////////////////////////////////////////////////////////////////
+@sample
+
+//Catch the inputs
+in1 = spl0; in2 = spl1; in3 = spl2; in4 = spl3;
+
+//Do the left mix
+spl0 = 	(in1 * modL1) +
+		(in2 * modL2) +
+		(in3 * modL3) +
+		(in4 * modL4);
+
+//Do the right mix
+spl1 = 	(in1 * modR1) +
+		(in2 * modR2) +
+		(in3 * modR3) +
+		(in4 * modR4);

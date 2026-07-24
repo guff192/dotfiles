@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PROPERTIES>
+  <VALUE name="welcomeScreenAlreadyShown" val="1"/>
+  <VALUE name="loginJwtToken" val="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2RlY2VudHNhbXBsZXMuY29tL3N0b3JlL2FwaS9hdXRoL3JlZnJlc2giLCJpYXQiOjE3NjY4NjMzMjMsImV4cCI6MTc4MzEyNDMzMywibmJmIjoxNzgyNTI0MzMzLCJqdGkiOiJid2dzUExlSlFsZnVocHB1Iiwic3ViIjoiMTM0Nzc2IiwicHJ2IjoiODdlMGFmMWVmOWZkMTU4MTJmZGVjOTcxNTNhMTRlMGIwNDc1NDZhYSJ9.g_w9xQdgoPbIrjZ0htPw4M7rfqMPVaQR-H9gZrrfmKU"/>
+  <VALUE name="loginJwtExpiresAt" val="1783124334378"/>
+  <VALUE name="loginEmail" val="kochkons1@ya.ru"/>
+  <VALUE name="numRecentFiles" val="10"/>
+  <VALUE name="recentFile00FriendlyName" val="Cavaquinho"/>
+  <VALUE name="recentFile00Url" val="file:///home/guff192/.config/DecentSampler/Sample%20Libraries/Cavaquinho.dsbundle/Cavaquinho.dspreset"/>
+  <VALUE name="recentFile00Bookmark" val="0."/>
+  <VALUE name="recentFile01FriendlyName" val="Church Carillon (Extended)"/>
+  <VALUE name="recentFile01Url" val="file:///home/guff192/.config/DecentSampler/Sample%20Libraries/Church%20Carillon.dsbundle/Church%20Carillon%20(Extended).dspreset"/>
+  <VALUE name="recentFile01Bookmark" val="0."/>
+  <VALUE name="recentFile02FriendlyName" val="DecenTron - Italian Accordion"/>
+  <VALUE name="recentFile02Url" val="file:///home/guff192/.config/DecentSampler/Sample%20Libraries/DecenTron%201.0.0/DecenTron%20-%20Italian%20Accordion.dspreset"/>
+  <VALUE name="recentFile02Bookmark" val="0."/>
+  <VALUE name="recentFile03FriendlyName" val="SSS Swells Multi"/>
+  <VALUE name="recentFile03Url" val="file:///home/guff192/.config/DecentSampler/Sample%20Libraries/885_v3_SoftStringSpurs_DanKeen_DecentSampler/SSS%20Swells%20Multi.dspreset"/>
+  <VALUE name="recentFile03Bookmark" val="0."/>
+  <VALUE name="recentFile04FriendlyName" val="885_v3_SoftStringSpurs_DanKeen_DecentSampler"/>
+  <VALUE name="recentFile04Url" val="file:///home/guff192/.config/DecentSampler/Sample%20Libraries/885_v3_SoftStringSpurs_DanKeen_DecentSampler"/>
+  <VALUE name="recentFile04Bookmark" val="0."/>
+  <VALUE name="recentFile05FriendlyName" val="Bass Tromb one two"/>
+  <VALUE name="recentFile05Url" val="file:///home/guff192/.config/DecentSampler/Sample%20Libraries/Bass%20Tromb%20one%20two"/>
+  <VALUE name="recentFile05Bookmark" val="0."/>
+  <VALUE name="recentFile06FriendlyName" val="s"/>
+  <VALUE name="recentFile06Url" val="file:///home/guff192/.config/DecentSampler/Sample%20Libraries/Barocca%20Flute"/>
+  <VALUE name="recentFile06Bookmark" val="0."/>
+  <VALUE name="recentFile07FriendlyName" val="Barroca Flute"/>
+  <VALUE name="recentFile07Url" val="file:///home/guff192/.config/DecentSampler/Sample%20Libraries/Barocca%20Flute/Barroca%20Flute.dspreset"/>
+  <VALUE name="recentFile07Bookmark" val="0."/>
+  <VALUE name="recentFile08FriendlyName" val="Layers - Charseau"/>
+  <VALUE name="recentFile08Url" val="file:///home/guff192/.config/DecentSampler/Sample%20Libraries/VT%20-%20Volitions%20Free%20Edition/Layers%20-%20Charseau.dspreset"/>
+  <VALUE name="recentFile08Bookmark" val="0."/>
+  <VALUE name="recentFile09FriendlyName" val="Duduk"/>
+  <VALUE name="recentFile09Url" val="file:///home/guff192/.config/DecentSampler/Sample%20Libraries/MyDuduk/Duduk.dspreset"/>
+  <VALUE name="recentFile09Bookmark" val="0."/>
+  <VALUE name="dontQueryForUpdate" val="0"/>
+</PROPERTIES>

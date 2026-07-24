@@ -1,0 +1,42 @@
+C10018 "/home/guff192/Music/Projects/The end or the beginning/Media"
+F BD3.wav 53544 0 1666244100 0
+D s 44100 n 1 l 0:00.606 i 16
+F "Hat [4].wav" 67480 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac c instagram.com/virion.flac
+D s 44100 n 2 l 0:00.189 i 32
+F "Hat [5].wav" 53880 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac c instagram.com/virion.flac
+D s 44100 n 2 l 0:00.150 i 32
+F "Hat [7].wav" 69960 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac c instagram.com/virion.flac
+D s 44100 n 2 l 0:00.196 i 32
+F HH-C.wav 13082 0 1666244432 0
+D s 44100 n 1 l 0:00.147 i 16
+F HH2.wav 15050 0 1666244398 0
+D s 44100 n 1 l 0:00.170 i 16
+F "Kick (1).wav" 166136 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac c instagram.com/virion.flac
+D s 44100 n 2 l 0:00.468 i 32
+F "Kick (10).wav" 176744 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac c instagram.com/virion.flac
+D s 44100 n 2 l 0:00.498 i 32
+F SD2.wav 38760 0 1666244734 0
+D s 44100 n 1 l 0:00.438 i 16
+F "Snare [17].wav" 152664 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac c instagram.com/virion.flac
+D s 44100 n 2 l 0:00.430 i 32
+F "Snare [20].wav" 91680 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac c instagram.com/virion.flac
+D s 44100 n 2 l 0:00.257 i 32
+F "Snare [8].wav" 94864 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac c instagram.com/virion.flac
+D s 44100 n 2 l 0:00.266 i 32
+F "The end or the beginning_stems_BD3-001.wav" 120744 0 1773363508 0
+D y 2026-03-13 s 48000 n 1 r 0:24.000
+D l 0:00.625 i 32
+F "The end or the beginning_stems_BD3-002.wav" 192744 0 1773363575 0
+D y 2026-03-13 s 48000 n 2 r 0:24.000
+D l 0:00.500 i 32
+F "The end or the beginning_stems_DecentSampler.wav" 6144744 0 1773393852 0
+D y 2026-03-13 s 48000 n 2 r 0:24.000
+D l 0:16.000 i 32

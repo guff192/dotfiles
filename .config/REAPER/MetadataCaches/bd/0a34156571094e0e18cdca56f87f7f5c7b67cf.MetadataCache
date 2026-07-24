@@ -1,0 +1,17 @@
+C10018 "/home/guff192/Music/Projects/Beaten by Ego/Media"
+F book_zonk.wav 83468 0 1492861464 0
+D t "Flip Thru Pages" s 22050 n 1 l 0:03.780
+D i 8
+F normal_crash.wav 1190646 0 1492861926 0
+D s 44100 n 2 l 0:03.374 i 32
+F panned_open_hat-glued.wav 114136 0 1768086675 0
+D y 2026-01-11 s 44100 n 2 r 0:12.000
+D l 0:00.428 i 24
+F panned_open_hat.wav 121246 0 1492861258 0
+D s 44100 n 2 l 0:00.457 i 24
+F pussy_juice.wav 708192 0 1492861588 0
+D s 44100 n 2 l 0:04.014 i 16
+F "SFX - MARTYR STOMP (BEEMADAMARTYR).wav" 166404 0 1764943193 0
+D s 48000 n 2 l 0:00.433 i 32
+F "SFX - RAVE KICK (BEEMADAMARTYR).wav" 166404 0 1764943193 0
+D s 48000 n 2 l 0:00.433 i 32

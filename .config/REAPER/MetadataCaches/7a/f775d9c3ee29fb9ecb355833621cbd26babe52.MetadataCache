@@ -1,0 +1,13 @@
+C10018 "/home/guff192/Music/Projects/Channel fever lostness/Media/samples"
+F boost_kick.wav 132344 0 1492860540 0
+D s 44100 n 2 l 0:00.500 i 24
+F dong_snare.wav 55214 0 1492860008 0
+D s 44100 n 2 l 0:00.155 i 32
+F fap_snare.wav 176444 0 1492860022 0
+D s 44100 n 2 l 0:01.000 i 16
+F open_up_open_hat.wav 305354 0 1492861288 0
+D s 44100 n 2 l 0:01.153 i 24
+F trap_open_hat.wav 427700 0 1492861384 0
+D s 44100 n 2 l 0:01.211 i 32
+F weep_hat.wav 10472 0 1492861446 0
+D s 44100 n 1 l 0:00.116 i 16

@@ -1,0 +1,24 @@
+C10018 "/home/guff192/Music/Projects/Movement forward/Media"
+F "08. Enjoy the Wait.flac" 4217450 0 1767554401 0
+D t "Enjoy the Wait" a Morcheeba b "Who Can You Trust?" y 1996
+D g "Trip-Hop, Electronic" c "Declipped & decompressed version" s 44100 n 2
+D l 1:07.373 i 16 m 08
+F 10-glued-01.wav 136418 0 1768443902 0
+D t "Enjoy the Wait" a Morcheeba b "Who Can You Trust?" y 2026-01-15
+D g "Trip-Hop, Electronic" c "Declipped & decompressed version" s 44100 n 1
+D r 0:08.343 l 0:00.561 i 16 m 08
+D j "mime:image/jpeg offset:3837 length:82668"
+F dragon_kick.wav 66440 0 1492860624 0
+D t "Trapsylvania (Kick)" s 44100 n 2 l 0:00.375
+D i 16
+F "Kick (10).wav" 176744 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac s 44100
+D n 2 l 0:00.498 i 32
+F "Movement forward_stems.wav" 2458344 0 1768445121 0
+D y 2026-01-15 s 48000 n 2 r 0:06.400
+D l 0:06.400 i 32
+F "Snare [2].wav" 103496 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac s 44100
+D n 2 l 0:00.291 i 32
+F sync_hat.wav 115918 0 1492861344 0
+D s 44100 n 2 l 0:00.327 i 32

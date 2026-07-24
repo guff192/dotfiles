@@ -1,0 +1,130 @@
+// This is a modified version of a plug-in originally developed by Philip S. Considine
+
+/*
+Copyright 2007, Philip S. Considine
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted 
+provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions 
+and the following disclaimer. 
+
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions 
+and the following disclaimer in the documentation and/or other materials provided with the distribution. 
+
+The name of Philip S. Considine may not be used to endorse or promote products derived from this
+software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR 
+IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND 
+FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS 
+BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES 
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, 
+STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF 
+THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+////////////////////////////////////////////////////////////////////////////////
+desc:8 channel mixer MODIFIED.
+
+////////////////////////////////////////////////////////////////////////////////
+slider1:-8<-40,10,0.1>Level 1 (dB)
+slider2:-8<-40,10,0.1>Level 2 (dB)
+slider3:-8<-40,10,0.1>Level 3 (dB)
+slider4:-8<-40,10,0.1>Level 4 (dB)
+slider5:-8<-40,10,0.1>Level 5 (dB)
+slider6:-8<-40,10,0.1>Level 6 (dB)
+slider7:-8<-40,10,0.1>Level 7 (dB)
+slider8:-8<-40,10,0.1>Level 8 (dB)
+slider9:0<0,1,0.01>Pan 1 L<->R
+slider10:1<0,1,0.01>Pan 2 L<->R
+slider11:0<0,1,0.01>Pan 3 L<->R
+slider12:1<0,1,0.01>Pan 4 L<->R
+slider13:0<0,1,0.01>Pan 5 L<->R
+slider14:1<0,1,0.01>Pan 6 L<->R
+slider15:0<0,1,0.01>Pan 7 L<->R
+slider16:1<0,1,0.01>Pan 8 L<->R
+
+////////////////////////////////////////////////////////////////////////////////
+@init
+//These just save me some typing if I change the slider ranges
+gainMin = -120; gainMax = 30;
+
+////////////////////////////////////////////////////////////////////////////////
+@slider
+//Catch bad values for gain sliders
+slider1 < gainMin ? slider1 = gainMin; slider1 > gainMax ? slider1 = gainMax;
+slider2 < gainMin ? slider2 = gainMin; slider2 > gainMax ? slider2 = gainMax;
+slider3 < gainMin ? slider3 = gainMin; slider3 > gainMax ? slider3 = gainMax;
+slider4 < gainMin ? slider4 = gainMin; slider4 > gainMax ? slider4 = gainMax;
+slider5 < gainMin ? slider5 = gainMin; slider5 > gainMax ? slider5 = gainMax;
+slider6 < gainMin ? slider6 = gainMin; slider6 > gainMax ? slider6 = gainMax;
+slider7 < gainMin ? slider7 = gainMin; slider7 > gainMax ? slider7 = gainMax;
+slider8 < gainMin ? slider8 = gainMin; slider8 > gainMax ? slider8 = gainMax;
+
+//Catch bad values for pan sliders
+slider9 < 0 ? slider9 = 0; slider9 > 1 ? slider9 = 1;
+slider10 < 0 ? slider10 = 0; slider10 > 1 ? slider10 = 1;
+slider11 < 0 ? slider11 = 0; slider11 > 1 ? slider11 = 1;
+slider12 < 0 ? slider12 = 0; slider12 > 1 ? slider12 = 1;
+slider13 < 0 ? slider13 = 0; slider13> 1 ? slider13 = 1;
+slider14 < 0 ? slider14 = 0; slider14 > 1 ? slider14 = 1;
+slider15 < 0 ? slider15 = 0; slider15 > 1 ? slider15 = 1;
+slider16 < 0 ? slider16 = 0; slider16 > 1 ? slider16 = 1;
+
+//Calculate gains and pans
+gain1 = 2 ^ ( slider1 / 6 ); L1 = sqrt(1-slider9); R1 = sqrt(slider9);
+gain2 = 2 ^ ( slider2 / 6 ); L2 = sqrt(1-slider10); R2 = sqrt(slider10);
+gain3 = 2 ^ ( slider3 / 6 ); L3 = sqrt(1-slider11); R3 = sqrt(slider11);
+gain4 = 2 ^ ( slider4 / 6 ); L4 = sqrt(1-slider12); R4 = sqrt(slider12);
+gain5 = 2 ^ ( slider5 / 6 ); L5 = sqrt(1-slider13); R5 = sqrt(slider13);
+gain6 = 2 ^ ( slider6 / 6 ); L6 = sqrt(1-slider14); R6 = sqrt(slider14);
+gain7 = 2 ^ ( slider7 / 6 ); L7 = sqrt(1-slider15); R7 = sqrt(slider15);
+gain8 = 2 ^ ( slider8 / 6 ); L8 = sqrt(1-slider16); R8 = sqrt(slider16);
+
+modL1 = gain1 * L1;
+modL2 = gain2 * L2;
+modL3 = gain3 * L3;
+modL4 = gain4 * L4;
+modL5 = gain5 * L5;
+modL6 = gain6 * L6;
+modL7 = gain7 * L7;
+modL8 = gain8 * L8;
+
+modR1 = gain1 * R1;
+modR2 = gain2 * R2;
+modR3 = gain3 * R3;
+modR4 = gain4 * R4;
+modR5 = gain5 * R5;
+modR6 = gain6 * R6;
+modR7 = gain7 * R7;
+modR8 = gain8 * R8;
+
+////////////////////////////////////////////////////////////////////////////////
+@sample
+
+//Catch the inputs
+in1 = spl0; in2 = spl1; in3 = spl2; in4 = spl3;
+in5 = spl4; in6 = spl5; in7 = spl6; in8 = spl7;
+
+//Do the left mix
+spl0 = 	(in1 * modL1) +
+		(in2 * modL2) +
+		(in3 * modL3) +
+		(in4 * modL4) +
+		(in5 * modL5) +
+		(in6 * modL6) +
+		(in7 * modL7) +
+		(in8 * modL8);
+
+//Do the right mix
+spl1 = 	(in1 * modR1) +
+		(in2 * modR2) +
+		(in3 * modR3) +
+		(in4 * modR4) +
+		(in5 * modR5) +
+		(in6 * modR6) +
+		(in7 * modR7) +
+		(in8 * modR8);

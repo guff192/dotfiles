@@ -1,0 +1,27 @@
+C10018 "/home/guff192/Music/Projects/Juicy bass/Media"
+F "808 x Bass [8].wav" 519528 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac c instagram.com/virion.flac
+D s 44100 n 2 l 0:01.470 i 32
+F cat_snare.wav 169234 0 1492859874 0
+D y 2012-03-14 s 44100 n 2 r 1:00:00.000
+D l 0:00.624 i 24
+F down_hat.wav 658258 0 1492861184 0
+D p 128.6652 s 44100 n 2 l 0:01.865
+D i 32
+F "Hat [4].wav" 67480 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac c instagram.com/virion.flac
+D s 44100 n 2 l 0:00.189 i 32
+F "Juicy bass_stems_Keys-002.wav" 7373544 0 1769961797 0
+D y 2026-02-01 s 96000 n 2 r 0:48.000
+D l 0:09.600 i 32
+F "Juicy bass_stems_Keys-005.wav" 7373544 0 1769961860 0
+D y 2026-02-01 s 96000 n 2 r 0:57.600
+D l 0:09.600 i 32
+F "Juicy bass_stems_Open Hat [2]-001.wav" 461544 0 1769900525 0
+D y 2026-02-01 s 96000 n 2 r 0:30.599
+D l 0:00.600 i 32
+F KRNE_kick_4.wav 168044 0 1492860764 0
+D s 44100 n 2 l 0:00.952 i 16
+F "Open Hat [2].wav" 219792 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac c instagram.com/virion.flac
+D s 44100 n 2 l 0:00.620 i 32

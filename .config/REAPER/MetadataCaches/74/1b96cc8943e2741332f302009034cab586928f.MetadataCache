@@ -1,0 +1,29 @@
+C10018 "/home/guff192/Music/Projects/Here we go again/Media"
+F "DrumBreak [180BPM].wav" 1411934 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac c instagram.com/virion.flac
+D s 44100 n 2 l 0:05.333 i 24
+F "Kick (1).wav" 166136 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac c instagram.com/virion.flac
+D s 44100 n 2 l 0:00.468 i 32
+F "Perc Loop [180 BPM] #2-glued-01.wav" 2826632 0 1770592585 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac y 2026-02-09
+D c instagram.com/virion.flac s 44100 n 2 l 0:10.666
+D i 24
+F "Perc Loop [180 BPM] #2-glued-02.wav" 2826632 0 1770595835 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac y 2026-02-09
+D c instagram.com/virion.flac s 44100 n 2 l 0:10.666
+D i 24
+F "Perc Loop [180 BPM] #2-glued-03.wav" 2826632 0 1770595886 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac y 2026-02-09
+D c instagram.com/virion.flac s 44100 n 2 l 0:10.666
+D i 24
+F "Perc Loop [180 BPM] #2-glued.wav" 2826548 0 1770592508 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac y 2026-02-09
+D c instagram.com/virion.flac s 44100 n 2 l 0:10.666
+D i 24
+F "Perc Loop [180 BPM] #2.wav" 1411934 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac c instagram.com/virion.flac
+D s 44100 n 2 l 0:05.333 i 24
+F "Snare [7].wav" 57112 0 1764688190 0
+D t instagram.com/virion.flac a instagram.com/virion.flac b instagram.com/virion.flac c instagram.com/virion.flac
+D s 44100 n 2 l 0:00.159 i 32
