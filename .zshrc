@@ -22,9 +22,22 @@ fi
 # ------------
 
 
+# Aliases
+# Note: set OPENWEATHERMAP_API_KEY in ~/.zsh_profile
+alias trru="trans :ru"
+alias weather="curl wttr.in/Tbilisi"
+alias weatherj="curl https://api.openweathermap.org/data/2.5/weather\?lat\=41.666737\&lon\=44.764121\&units\=metric\&appid\=\$OPENWEATHERMAP_API_KEY | jq '{weather: {main: .weather[0]?.main, description: .weather[0]?.description}, main: .main, wind: .wind, country: .sys.country, rain: .rain, snow: .snow, city: .name, sunset: (.sys.sunset + .timezone)|strftime(\"%H:%M\"), sunrise: (.sys.sunrise + .timezone)|strftime(\"%H:%M\")}'"
+
+
 # Alacritty
 if [[ $CURRENT_OS == "MacOS" ]]; then
     alias alacritty="/Applications/Alacritty.app/Contents/MacOS/alacritty"
+fi
+
+
+# bat
+if command -v batcat >/dev/null; then
+    alias bat="batcat"
 fi
 
 
@@ -41,8 +54,7 @@ fi
 
 
 # uv - Python package manager & virtualenv manager
-which uv
-if [ $? -eq 0 ]; then
+if command -v uv >/dev/null; then
     eval "$(uv generate-shell-completion bash)"
     eval "$(uv generate-shell-completion zsh)"
     eval "$(uvx --generate-shell-completion bash)"
@@ -51,10 +63,12 @@ fi
 
 
 # psql
-# 
+#
 # MacOS Only
 if [[ $CURRENT_OS == "MacOS" ]]; then
-    # export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+    export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+elif [[ -d /usr/local/pgsql/bin ]]; then
+    export PATH=/usr/local/pgsql/bin:$PATH
 fi
 
 
@@ -101,8 +115,7 @@ fi
 
 
 # Go (Golang) variables
-go env
-if [ $? -eq 0 ]; then
+if command -v go >/dev/null; then
     export GOBIN="$(go env GOPATH)/bin"
     export PATH=$GOBIN:$PATH
 fi
@@ -195,7 +208,12 @@ ZSH_THEME="mgutz" # set by `omz`
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z)
+
+# tmux autostart configuration
+ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_DEFAULT_SESSION_NAME=main
+
+plugins=(git z tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -230,28 +248,21 @@ fi
 
 
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then
-    . '/Users/guff192/google-cloud-sdk/path.zsh.inc';
-fi
+# nvm (loaded only if installed)
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/guff192/google-cloud-sdk/completion.zsh.inc' ]; then
-    . '/Users/guff192/google-cloud-sdk/completion.zsh.inc';
-fi
+# bun completions
+[ -s "$HOME/.oh-my-zsh/completions/_bun" ] && source "$HOME/.oh-my-zsh/completions/_bun"
 
-# The next line updates PATH for Yandex Cloud CLI.
-if [ -f '/Users/guff192/yandex-cloud/path.bash.inc' ]; then
-    source '/Users/guff192/yandex-cloud/path.bash.inc';
-fi
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
-# The next line enables shell command completion for yc.
-if [ -f '/Users/guff192/yandex-cloud/completion.zsh.inc' ]; then
-    source '/Users/guff192/yandex-cloud/completion.zsh.inc';
-fi
+# kimi-code
+export PATH="$HOME/.kimi-code/bin:$PATH"
 
-# The next line updates PATH for Yandex Cloud YDB CLI.
-if [ -f '/Users/guff192/ydb/path.bash.inc' ]; then
-    source '/Users/guff192/ydb/path.bash.inc';
-fi
+# LM Studio
+export PATH="$PATH:$HOME/.lmstudio/bin"
 

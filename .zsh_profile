@@ -3,3 +3,7 @@ VIM="nvim"
 
 bindkey -s ^f "tmux-sessionizer\n"
 
+# OpenWeatherMap API key for the weatherj alias in .zshrc
+# Set the real key on the new machine in ~/.zsh_profile; do not commit it to the repo.
+# export OPENWEATHERMAP_API_KEY="your_api_key_here"
+

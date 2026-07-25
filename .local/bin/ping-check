@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# URL to ping to check internet connectivity
+TARGETS=("8.8.8.8" "telegram.org")
+
+# Function to check if the ping was successful
+ping_check() {
+    for target in "${TARGETS[@]}"; do
+        if ping -c 1 "$target" > /dev/null 2>&1; then
+            return 0  # Success if any target responds
+        fi
+    done
+    return 1  # Failure if no targets respond
+}
+
+# Main loop to continuously check connectivity and execute the command when connected
+while true; do
+    if ping_check; then
+        paplay ~/Music/alert_sound.wav
+        notify-send -t 10000 "Internet is working!" "Internet connection restored"
+        # Replace 'your_command' with the command you want to run when internet is connected your_command
+        break  # Exit loop after executing the command once
+    else
+        echo "No internet connection. Retrying in 10 seconds..."
+        sleep 10
+    fi
+done
