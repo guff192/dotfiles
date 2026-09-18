@@ -1,0 +1,91 @@
+#!/usr/bin/env python3
+# omarchy:summary=Print the Oh My Pi (omp) usage record as JSON
+# omarchy:args=[--force] [--limits-only]
+# omarchy:hidden=true
+"""Collect Oh My Pi (omp) usage into an Omarchy agent record."""
+
+import json
+import subprocess
+import sys
+from datetime import datetime, timezone
+
+try:
+    proc = subprocess.run(["omp", "usage", "--json"], capture_output=True, text=True, timeout=10)
+    if proc.returncode != 0 or not proc.stdout.strip():
+        sys.exit(1)
+    data = json.loads(proc.stdout)
+except Exception:
+    sys.exit(1)
+
+limits = []
+seen = set()
+
+PROVIDER_NAMES = {
+    "google-antigravity": "Antigravity",
+    "openai-codex": "Codex",
+    "xai-oauth": "Grok",
+    "claude": "Claude",
+}
+
+for report in data.get("reports", []):
+    prov = report.get("provider", "")
+    prov_display = PROVIDER_NAMES.get(prov, prov)
+    
+    for lim in report.get("limits", []):
+        lbl = lim.get("label", "").strip()
+        win = lim.get("window", {}).get("label", "").strip()
+        
+        # Build concise, descriptive title e.g. "Antigravity - Gemini (5h)" or "Grok - Weekly"
+        if prov == "openai-codex":
+            title = f"Codex ({win})" if win else f"Codex - {lbl}"
+        elif lbl and win and lbl.lower() != win.lower():
+            # Abbreviate common window names like "5 Hour" -> "5h", "Weekly" -> "Weekly"
+            win_short = "5h" if "5" in win else win
+            title = f"{prov_display} - {lbl} ({win_short})"
+        elif lbl:
+            title = f"{prov_display} - {lbl}"
+        else:
+            title = f"{prov_display} ({win})" if win else prov_display
+
+        if title in seen:
+            continue
+        seen.add(title)
+
+        amount = lim.get("amount", {})
+        used_frac = amount.get("usedFraction", 0)
+        resets_ms = lim.get("window", {}).get("resetsAt")
+        resets_at = None
+        if resets_ms:
+            resets_at = datetime.fromtimestamp(resets_ms / 1000, tz=timezone.utc).isoformat()
+
+        limits.append({
+            "title": title,
+            "label": title,
+            "percent": round(used_frac, 4),
+            "resetsAt": resets_at,
+        })
+
+record = {
+    "schemaVersion": 1,
+    "id": "omp",
+    "name": "Oh My Pi",
+    "updatedAt": datetime.now(timezone.utc).isoformat(),
+    "ready": len(limits) > 0,
+    "hasLocalStats": False,
+    "todayPrompts": 0,
+    "todaySessions": 0,
+    "todayTotalTokens": 0,
+    "todayTokensByModel": {},
+    "recentDays": [],
+    "totalPrompts": 0,
+    "totalSessions": 0,
+    "activeDays": 0,
+    "activeDates": [],
+    "modelUsage": {},
+    "limits": limits,
+    "tierLabel": "Multi-Provider",
+    "usageStatusText": "",
+    "authHelpText": "Configure providers in Oh My Pi with `omp login`.",
+}
+
+print(json.dumps(record))
