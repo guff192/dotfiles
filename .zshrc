@@ -54,12 +54,12 @@ fi
 
 
 # uv - Python package manager & virtualenv manager
-if command -v uv >/dev/null; then
-    eval "$(uv generate-shell-completion bash)"
-    eval "$(uv generate-shell-completion zsh)"
-    eval "$(uvx --generate-shell-completion bash)"
-    eval "$(uvx --generate-shell-completion zsh)"
-fi
+# if command -v uv >/dev/null; then
+#     eval "$(uv generate-shell-completion bash)"
+#     eval "$(uv generate-shell-completion zsh)"
+#     eval "$(uvx --generate-shell-completion bash)"
+#     eval "$(uvx --generate-shell-completion zsh)"
+# fi
 
 
 # psql
@@ -266,3 +266,12 @@ export PATH="$HOME/.kimi-code/bin:$PATH"
 # LM Studio
 export PATH="$PATH:$HOME/.lmstudio/bin"
 
+
+# Added by LM Studio CLI tool (lms)
+export PATH="$PATH:/home/guff192/.lmstudio/bin"
+
+. "$HOME/.local/share/../bin/env"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/guff192/.local/bin:$PATH"
