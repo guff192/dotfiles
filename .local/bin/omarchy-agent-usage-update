@@ -48,8 +48,7 @@ collect() {
 pids=()
 seen_agents=()
 
-# Collect from ~/.local/bin and /usr/share/omarchy/bin
-for dir in "$HOME/.local/bin" "${OMARCHY_PATH:-/usr/share/omarchy}/bin"; do
+for dir in "$HOME/.config/omarchy/bin" "$HOME/.local/bin" "${OMARCHY_PATH:-/usr/share/omarchy}/bin"; do
   [[ -d $dir ]] || continue
   for collector in "$dir"/omarchy-agent-usage-*; do
     [[ -x $collector ]] || continue
