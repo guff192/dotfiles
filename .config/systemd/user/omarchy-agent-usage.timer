@@ -1,0 +1,10 @@
+[Unit]
+Description=Periodically update Omarchy AI agent usage stats
+
+[Timer]
+OnBootSec=1m
+OnUnitActiveSec=5m
+AccuracySec=10s
+
+[Install]
+WantedBy=timers.target
